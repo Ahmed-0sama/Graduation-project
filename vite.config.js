@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://ecofi.runasp.net',
+        target: 'https://ecofi-fheaf6arh9acd6ck.germanywestcentral-01.azurewebsites.net',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path,
