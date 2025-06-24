@@ -248,7 +248,7 @@ const Reports = () => {
               <span style={{ color: entry.color }}>
                 {entry.name || entry.category}
               </span>
-              : ${entry.value.toFixed(2)}
+              : L.E {entry.value.toFixed(2)}
             </div>
           ))}
         </div>
@@ -406,7 +406,7 @@ const Reports = () => {
                 Spending Limit
               </h2>
               <p className="text-gray-400 text-sm mb-4">
-                Your current salary is $
+                Your current salary is L.E{" "}
                 {financialGoals.salary.toLocaleString("en-US", {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2,
@@ -414,14 +414,14 @@ const Reports = () => {
               </p>
               <div className="flex justify-between items-end mb-2">
                 <span className="text-2xl font-bold text-white">
-                  $
+                  {"L.E "}
                   {totalExpenses.toLocaleString("en-US", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2,
                   })}
                 </span>
                 <span className="text-gray-400">
-                  of $
+                  of L.E{" "}
                   {(
                     financialGoals.salary - financialGoals.financialGoal
                   ).toLocaleString("en-US", {
@@ -458,11 +458,11 @@ const Reports = () => {
                 const spendingLimitActual =
                   financialGoals.salary - financialGoals.financialGoal;
                 const amountExceeded = totalExpenses - spendingLimitActual;
-                let content = `Current Saving Goal: $${financialGoals.financialGoal.toFixed(
+                let content = `Current Saving Goal: L.E ${financialGoals.financialGoal.toFixed(
                   2
                 )}`;
                 if (amountExceeded > 0) {
-                  content += `<br/>Over Budget By: $${amountExceeded.toFixed(
+                  content += `<br/>Over Budget By: L.E ${amountExceeded.toFixed(
                     2
                   )}`;
                 }
@@ -479,7 +479,7 @@ const Reports = () => {
               ) : (
                 <>
                   <p className="text-gray-400 text-sm">
-                    Your current saving goal is $
+                    Your current saving goal is L.E{" "}
                     {financialGoals.financialGoal.toFixed(2)}
                   </p>
                   <div className="flex flex-wrap justify-center gap-4 mt-4">
@@ -590,7 +590,7 @@ const Reports = () => {
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="text-center">
                           <div className="text-2xl font-bold text-white">
-                            $
+                            {"L.E "}
                             {(overBudget > 0
                               ? financialGoals.financialGoal - overBudget
                               : financialGoals.financialGoal
@@ -598,7 +598,7 @@ const Reports = () => {
                           </div>
                           {overBudget > 0 && (
                             <div className="text-red-500 text-sm mt-1">
-                              -${overBudget.toFixed(2)} ▼
+                              -L.E {overBudget.toFixed(2)} ▼
                             </div>
                           )}
                         </div>

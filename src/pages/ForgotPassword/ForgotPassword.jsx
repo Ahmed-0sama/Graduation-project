@@ -61,11 +61,14 @@ const ForgotPassword = () => {
     }
     setLoading(true);
     try {
-      await axios.post("/api/Mail/reset-password", {
-        email,
-        token: urlToken,
-        newPassword,
-      });
+      await axios.post(
+        "https://ecofy.salmonpond-551ebfc8.italynorth.azurecontainerapps.io/api/Mail/reset-password",
+        {
+          email,
+          token: urlToken,
+          newPassword,
+        }
+      );
       setMessage(
         "Your password has been reset! You can now log in with your new password."
       );

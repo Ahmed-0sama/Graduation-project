@@ -4,7 +4,7 @@ import Navbar from "../../Components/Navbar";
 import NotificationRing from "../../Components/NotificationRing";
 import Chatbot from "../../Components/Chatbot";
 import { FiMessageCircle } from "react-icons/fi";
-import UserInfo from "../../components/UserInfo";
+import UserInfo from "../../components/UserInfo.jsx";
 
 export default function MainLayout() {
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);

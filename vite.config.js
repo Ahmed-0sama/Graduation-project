@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://ecofi-fheaf6arh9acd6ck.germanywestcentral-01.azurewebsites.net',
+        target: 'https://ecofy.salmonpond-551ebfc8.italynorth.azurecontainerapps.io',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path,
@@ -16,13 +16,15 @@ export default defineConfig({
             console.log('proxy error', err);
           });
           proxy.on('proxyReq', (proxyReq, req, _res) => {
-            proxyReq.setHeader('Origin', 'https://ecofi-fheaf6arh9acd6ck.germanywestcentral-01.azurewebsites.net');
+            proxyReq.setHeader('Origin', 'https://ecofy.salmonpond-551ebfc8.italynorth.azurecontainerapps.io');
+            proxyReq.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+            proxyReq.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization');
             console.log('Sending Request:', req.method, req.url);
           });
           proxy.on('proxyRes', (proxyRes, req, _res) => {
             proxyRes.headers['Access-Control-Allow-Origin'] = '*';
-            proxyRes.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS';
-            proxyRes.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization, X-Requested-With';
+            proxyRes.headers['Access-Control-Allow-Methods'] = 'GET,OPTIONS,PATCH,DELETE,POST,PUT';
+            proxyRes.headers['Access-Control-Allow-Headers'] = 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization';
             console.log('Received Response:', proxyRes.statusCode, req.url);
           });
         }
